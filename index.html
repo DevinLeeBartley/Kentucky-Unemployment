@@ -6,14 +6,14 @@
     <title>Kentucky Unemployment Rate 2000-2013</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
-    <!--    set up the script source links for the jquery, leaflet, simplestatistics and PapaParse libraries-->
-    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<!--    set up the script source links for the jquery, leaflet, simplestatistics and PapaParse libraries-->
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/simple-statistics/1.0.0/simple_statistics.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
-    <!--    set up the link for the css stylesheet and the google fonts-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-statistics/1.0.0/simple_statistics.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
+<!--    set up the link for the css stylesheet and the google fonts-->
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
-    <link href='http://fonts.googleapis.com/css?family=Vidaloka' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Vidaloka' rel='stylesheet' type='text/css'>
 
     <style>
         body {
@@ -58,8 +58,8 @@
             font-size: 1em;
             color: #001323;
         }
-        /*        define the properties of the legend element*/
         
+        /*        define the properties of the legend element*/
         .legend {
             padding: 6px 8px;
             font-size: 1em;
@@ -69,25 +69,30 @@
             border-radius: 5px;
             width: 160px;
         }
-        /*        define font size, weight, color and margin for the legend header*/
         
+        /*        define font size, weight, color and margin for the legend header*/
         .legend h3 {
             font-size: 1.1em;
             font-weight: bold;
             line-height: 1.2em;
             color: whitesmoke;
-            <<<<<<< Updated upstream margin: 5px 5px 15px 5px;
-            =======<<<<<<< HEAD margin: 10px;
-            =======margin: 5px 5px 15px 5px;
-            >>>>>>> origin/master >>>>>>> Stashed changes
+<<<<<<< Updated upstream
+            margin: 5px 5px 15px 5px;
+=======
+<<<<<<< HEAD
+            margin: 10px;
+=======
+            margin: 5px 5px 15px 5px;
+>>>>>>> origin/master
+>>>>>>> Stashed changes
         }
         
         .legend li {
             list-style-type: none;
             height: 22px;
         }
-        /*        give each span element some width and height and float on the left side so that the labels show up next to them*/
         
+        /*        give each span element some width and height and float on the left side so that the labels show up next to them*/
         .legend span {
             width: 40px;
             height: 20px;
@@ -95,15 +100,15 @@
             /*            margin-right: 10px;*/
             margin: 0 10px 4px 0;
         }
-        /*        after each label element clear the float property so that the next span element will not float next to it*/
         
+        /*        after each label element clear the float property so that the next span element will not float next to it*/
         .legend label:after {
             content: '';
             display: block;
             clear: both;
         }
-        /*        give a style to the info element*/
         
+        /*        give a style to the info element*/
         .info {
             padding: 6px 8px;
             font-size: 1em;
@@ -111,22 +116,27 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
             border-radius: 5px;
             text-align: right;
-            <<<<<<< Updated upstream max-width: 180px;
-            =======<<<<<<< HEAD width: 265px;
-            =======max-width: 180px;
-            >>>>>>> origin/master >>>>>>> Stashed changes
+<<<<<<< Updated upstream
+            max-width: 180px; 
+=======
+<<<<<<< HEAD
+            width: 265px;
+=======
+            max-width: 180px; 
+>>>>>>> origin/master
+>>>>>>> Stashed changes
         }
         
         .info h3 {
             margin: 0;
         }
-        /*        set max width for leaflet popups*/
         
+        /*        set max width for leaflet popups*/
         .leaflet-popup-content {
             max-width: 180px;
         }
-        /*        add properties for the UI control menu*/
         
+        /*        add properties for the UI control menu*/   
         #ui-controls {
             width: 176px;
             padding: 8px 15px 8px 15px;
@@ -135,13 +145,13 @@
             border-radius: 5px;
             color: whitesmoke;
         }
-        /*        add the year-slider element*/
         
+        /*        add the year-slider element*/
         .year-slider {
             width: 100%;
         }
-        /*set up the span position for the .min and .max class attributes that will be either end of the slider*/
         
+        /*set up the span position for the .min and .max class attributes that will be either end of the slider*/
         #ui-controls .min {
             float: left;
         }
@@ -149,8 +159,8 @@
         #ui-controls .max {
             float: right;
         }
-        /*set up the font size and weight for the label*/
         
+        /*set up the font size and weight for the label*/
         label {
             font-size: 1.1em;
             font-weight: bold;
@@ -171,6 +181,7 @@
         </label>
     </div>
     <script>
+        
         //create labels variable for map with each label element that will be required.
         var labels = {
             "NAME": "County Name"
@@ -202,18 +213,10 @@
         var map = L.map('map', options);
 
         // load map tiles and add to map
-        //        var CartoDB_DarkMatter = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
-        //            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
-        //            , subdomains: 'abcd'
-        //            , maxZoom: 19
-        //        }).addTo(map);
-
-        var Stamen_Toner = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.{ext}', {
-            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        var CartoDB_DarkMatter = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
             , subdomains: 'abcd'
-            , minZoom: 0
             , maxZoom: 19
-            , ext: 'png'
         }).addTo(map);
 
         // declare global variables
@@ -312,8 +315,8 @@
                 //bind a popup to each layer that shows the county name and the currently selected attribute (which is the current years unemployment rate)
                 layer.bindPopup("<b>" + props["NAME"] + " County</b></br>" + "Unemployment Rate in " + attribute + ": " +
                     props[attribute] + "%");
-
-                layer.on('mouseout', function () {
+                
+                layer.on('mouseout', function() {
                     layer.closePopup();
                 })
             });
